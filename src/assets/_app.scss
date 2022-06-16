@@ -1,6 +1,23 @@
-.app{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f5f5;
+  padding: 20px 0;
+  .todoWrapper {
+    width: 500px;
+    margin: 0 auto;
+    .todo{
+      -webkit-box-shadow: 0 20px 17px 3px rgba(34, 60, 80, 0.2);
+      -moz-box-shadow: 0 20px 17px 3px rgba(34, 60, 80, 0.2);
+      box-shadow: 0 20px 17px 3px rgba(34, 60, 80, 0.2);
+    }
+    h1 {
+      text-align: center;
+      color: #ede4e4;
+      margin-bottom: 20px;
+      font-size: 70px;
+    }
+  }
 }
