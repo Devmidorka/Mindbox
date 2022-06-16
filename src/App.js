@@ -1,10 +1,13 @@
 import React from 'react';
-import Checkbox from "./components/Checkbox";
+import TodoItem from "./components/TodoItem";
 
 const App = () => {
     return (
-        <div>
-            <Checkbox/>
+        <div style={{marginTop:'20px'}}>
+           <TodoItem/>
+           <TodoItem/>
+           <TodoItem/>
+           <TodoItem/>
         </div>
     );
 };

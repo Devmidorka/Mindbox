@@ -1,0 +1,15 @@
+.todoItem{
+  display:flex;
+  align-items:center;
+  padding:10px;
+
+  border-bottom:1px solid #ebebeb;
+  .todoTitle{
+    margin-left:15px;
+    &.completed{
+      text-decoration: line-through;
+      color: gray;
+    }
+  }
+
+}

@@ -1,15 +1,17 @@
 .checkboxWrapper {
+  position:relative;
   input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+    position:absolute;
   }
 
   .checkbox {
     display: block;
     width: 25px;
     height: 25px;
-    border: 1px solid gray;
+    border: 1px solid #ebebeb;
     border-radius: 50%;
     position: relative;
   }
