@@ -1,0 +1,34 @@
+.checkboxWrapper {
+  input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .checkbox {
+    display: block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  input[type="checkbox"]:checked {
+    & + .checkbox {
+      border-color: #77c0af;
+      &:after {
+        content: ' ';
+        display: block;
+        position: absolute;
+        width: 5px;
+        height: 13px;
+        border-right: 2px solid #77c0af;
+        border-bottom: 2px solid #77c0af;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+  }
+}
