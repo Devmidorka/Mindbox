@@ -1,13 +1,10 @@
 import React from 'react';
-import TodoItem from "./components/TodoItem";
+import TodoList from "./components/TodoList";
 
 const App = () => {
     return (
-        <div style={{marginTop:'20px'}}>
-           <TodoItem/>
-           <TodoItem/>
-           <TodoItem/>
-           <TodoItem/>
+        <div className={'app'}>
+           <TodoList/>
         </div>
     );
 };
