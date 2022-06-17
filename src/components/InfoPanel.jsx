@@ -1,6 +1,6 @@
 import React from 'react';
 
-const InfoPanel = ({countOfItems, sort, changeActive}) => {
+const InfoPanel = ({countOfItems, sort, changeActive, clearCompleted}) => {
     return (
         <div className='infoPanel'>
             <span className='itemsLeft'>{countOfItems} items left</span>
@@ -16,7 +16,7 @@ const InfoPanel = ({countOfItems, sort, changeActive}) => {
 
             </div>
             <div className="clearButton">
-
+                <span onClick={clearCompleted}>Clear completed</span>
             </div>
         </div>
     );

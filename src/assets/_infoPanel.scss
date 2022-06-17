@@ -1,13 +1,16 @@
 .infoPanel{
   background-color:white;
-  z-index:10;
-  border-bottom:1px solid gray;
+  z-index:9999;
   padding:20px;
   display:flex;
   justify-content:space-between;
   align-items: center;
+  position:relative;
+  border-bottom:1px solid rgba(128, 128, 128, 0.83);
+
   .itemsLeft{
     font-size:16px;
+    color:#c2c2c2;
   }
   .sortButtons{
     display:flex;
@@ -17,36 +20,43 @@
       margin:0 5px;
       border-radius:5px;
       cursor:pointer;
+      color:#c2c2c2;
       &.active{
         border:1px solid #ecd7d7;
       }
     }
   }
-  //&:before{
-  //  content:'';
-  //  display: block;
-  //  height:5px;
-  //  width:99%;
-  //  background-color:white;
-  //  position:relative;
-  //  top:40px;
-  //  margin:0 auto;
-  //  z-index:5;
-  //  border-bottom:1px solid gray;
-  //
-  //}
-  //&:after{
-  //  content:'';
-  //  display: block;
-  //  height:5px;
-  //  width:98%;
-  //  background-color:white;
-  //  position:relative;
-  //  top:40px;
-  //  margin:0 auto;
-  //  z-index:0;
-  //  border-bottom:1px solid gray;
-  //
-  //
-  //}
+  &:before,
+  &:after{
+    content:'';
+    display: block;
+    height:5px;
+    background-color:white;
+    position:absolute;
+    border-bottom:1px solid rgba(128, 128, 128, 0.83);
+    left:50%;
+    transform: translateX(-50%);
+  }
+  &:before{
+    width:99%;
+    top:101%;
+    z-index:5;
+  }
+  &:after{
+    width:98%;
+    z-index:0;
+    top:calc(100% + 8px);
+
+  }
+
+  .clearButton{
+    span{
+      font-size:16px;
+      cursor:pointer;
+      color:#c2c2c2;
+    }
+  }
+  @media(max-width:500px){
+    flex-direction:column;
+  }
 }

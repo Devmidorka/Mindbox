@@ -18,6 +18,10 @@
       color: #ede4e4;
       margin-bottom: 20px;
       font-size: 70px;
+      font-weight:100;
+    }
+    @media(max-width:550px){
+      width:90%;
     }
   }
 }

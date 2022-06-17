@@ -20,19 +20,19 @@ const App = () => {
         active: 0
 
     })
+
+    const [isOpen, setIsOpen] = useState(true)
+
+
     const activeSort = sortItems.buttons[sortItems.active]
 
     const sortTodos = (todos, condition) => {
-
         switch (condition){
             case 'active': return todos.filter(todo => todo.isCompleted === false);
             case 'completed': return todos.filter(todo => todo.isCompleted === true);
             default: return todos
         }
     }
-
-    const [isOpen, setIsOpen] = useState(true)
-
 
     function changeStatus (id, status){
         setTodos(todos.map(todo =>
@@ -52,7 +52,13 @@ const App = () => {
 
         }
     }
+
+    const clearCompleted = () => {
+        setTodos(todos.filter(todo => todo.isCompleted === false ))
+    }
+
     const sortedTodos = sortTodos(todos, activeSort.condition)
+
     return (
         <div className={'app'}>
             <div className={'todoWrapper'}>
@@ -69,7 +75,9 @@ const App = () => {
                         sort={sortItems}
                         changeActive={(index) => {
                             setSortItems({...sortItems, active:index})
-                        }}/>
+                        }}
+                        clearCompleted={clearCompleted}
+                    />
                 </div>
 
             </div>
