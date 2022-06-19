@@ -2,14 +2,14 @@ import React from 'react';
 import Input from "./Input";
 import AccordionControl from "./AccordionControl";
 
-const ControlPanel = ({setIsOpen, isOpen, controlChange}) => {
+const ControlPanel = ({setIsOpen, isOpen, addNewTask}) => {
     return (
         <div className={'controlPanel'}>
             <AccordionControl
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
             />
-            <Input onKeyDown={controlChange}/>
+            <Input onKeyDown={addNewTask}/>
         </div>
     );
 };

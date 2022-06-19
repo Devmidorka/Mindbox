@@ -10,13 +10,17 @@ const InfoPanel = ({countOfItems, sort, changeActive, clearCompleted}) => {
                         className={`${sort.active === index ? 'active' : ''}`}
                         onClick={() => changeActive(index)}
                         key={index}
+                        data-testid={`button-${button.condition}`}
 
                     >{button.title}</div>
                 )}
 
             </div>
             <div className="clearButton">
-                <span onClick={clearCompleted}>Clear completed</span>
+                <span
+                    onClick={clearCompleted}
+                    data-testid={'clear-completed-button'}
+                >Clear completed</span>
             </div>
         </div>
     );

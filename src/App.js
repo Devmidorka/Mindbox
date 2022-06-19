@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import TodoList from "./components/TodoList";
 import ControlPanel from "./components/ControlPanel";
 import InfoPanel from "./components/InfoPanel";
+import {addNewTask} from "./utils/addNewTask";
+import {sortTodos} from "./utils/sortTasks";
+import {changeTaskStatus} from "./utils/changeTaskStatus";
+import {clearCompleted} from "./utils/clearCompletedTasks";
 
 const App = () => {
 
@@ -23,38 +27,14 @@ const App = () => {
 
     const [isOpen, setIsOpen] = useState(true)
 
-
     const activeSort = sortItems.buttons[sortItems.active]
 
-    const sortTodos = (todos, condition) => {
-        switch (condition){
-            case 'active': return todos.filter(todo => todo.isCompleted === false);
-            case 'completed': return todos.filter(todo => todo.isCompleted === true);
-            default: return todos
-        }
-    }
-
-    function changeStatus (id, status){
-        setTodos(todos.map(todo =>
-            todo.id === id ? {...todo, isCompleted:status}  : todo
-        ))
-    }
-
-    const controlChange = (e, changeInput) => {
-        if(e.key === 'Enter'){
-            setTodos([...todos, {
-                id: todos[todos.length-1].id + 1,
-                title: e.target.value,
-                isCompleted: false
-            }])
+    const inputClickEnter = (e, setIsModalOpen, changeInput) => {
+        if (e.key === 'Enter') {
+            addNewTask(e.target.value, todos, setTodos)
+            setIsModalOpen(true)
             changeInput('')
-            setIsOpen(true)
-
         }
-    }
-
-    const clearCompleted = () => {
-        setTodos(todos.filter(todo => todo.isCompleted === false ))
     }
 
     const sortedTodos = sortTodos(todos, activeSort.condition)
@@ -64,9 +44,16 @@ const App = () => {
             <div className={'todoWrapper'}>
                 <h1>todos</h1>
                 <div className="todo">
-                    <ControlPanel setIsOpen = {setIsOpen} isOpen={isOpen} controlChange={controlChange}/>
+                    <ControlPanel
+                        setIsOpen={setIsOpen}
+                        isOpen={isOpen}
+                        addNewTask={(e, changeInput) => inputClickEnter(e, setIsOpen, changeInput)}
+                    />
                     {isOpen ?
-                        <TodoList todos={sortedTodos} changeStatus={changeStatus}/>
+                        <TodoList
+                            todos={sortedTodos}
+                            changeStatus={(id, status) => changeTaskStatus(id, status, todos, setTodos)}
+                        />
                         :
                         null
                     }
@@ -74,9 +61,9 @@ const App = () => {
                         countOfItems={sortedTodos.length}
                         sort={sortItems}
                         changeActive={(index) => {
-                            setSortItems({...sortItems, active:index})
+                            setSortItems({...sortItems, active: index})
                         }}
-                        clearCompleted={clearCompleted}
+                        clearCompleted={() => clearCompleted(todos, setTodos)}
                     />
                 </div>
 

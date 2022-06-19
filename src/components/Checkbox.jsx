@@ -12,7 +12,8 @@ const Checkbox = ({state, onChange, todoId}) => {
             <input
                 type="checkbox"
                 checked={isChecked}
-                onChange={(change)}
+                onChange={change}
+                data-testid={isChecked ? 'completed-task' : 'uncompleted-task'}
             />
             <span className='checkbox'/>
         </label>
