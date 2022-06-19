@@ -7,7 +7,8 @@
   border-bottom:1px solid #ebebeb;
   .todoTitle{
     margin-left:15px;
-    overflow-x:hidden;
+    word-break: break-all;
+    font-weight:100;
     &.completed{
       text-decoration: line-through;
       color: #dadada;
